@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+
+    <style>
+      .form-container {
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+        width: 400px;
+        margin: 0 auto;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-bottom: 15px;
+      }
+
+      .form-button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="form-container">
+      <h1>User Registration</h1>
+
+      <form action="">
+        <div>
+          <label for="firstName" class="form-label">First Name:</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="lastName" class="form-label">Last Name:</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="email" class="form-label">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="contact" class="form-label">Contact Number:</label>
+          <input
+            type="tel"
+            id="contact"
+            name="contact"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="dateOfBirth" class="form-label">Date Of Birth:</label>
+          <input
+            type="date"
+            id="dateOfBirth"
+            name="dateOfBirth"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="age" class="form-label">Age:</label>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="gender" class="form-label">Gender:</label>
+          <select id="gender" name="gender" class="form-input" required>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="resume" class="form-label">Resume (PDF only):</label>
+          <input
+            type="file"
+            id="resume"
+            name="resume"
+            accept=".pdf"
+            class="form-input"
+          />
+        </div>
+
+        <button type="submit" class="form-button">Register</button>
+      </form>
+    </div>
+  </body>
+</html>
