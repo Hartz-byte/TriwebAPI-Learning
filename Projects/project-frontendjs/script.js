@@ -20,7 +20,40 @@ const addUserFunction = () => {
   moveDiv.className = "move-div";
   moveDiv.innerHTML = inputBox.value;
 
+  addUser.disabled = true;
+  inputBox.disabled = true;
+
   redBox.append(moveDiv);
 };
 
+const removeUserFunction = () => {
+  moveDiv.remove();
+  inputBox.value = "";
+
+  addUser.disabled = false;
+  inputBox.disabled = false;
+};
+
+const moveToRedFunction = () => {
+  redBox.append(moveDiv);
+};
+
+const moveToGreenFunction = () => {
+  greenBox.append(moveDiv);
+};
+
+const moveToBlueFunction = () => {
+  blueBox.append(moveDiv);
+};
+
+const moveToYellowFunction = () => {
+  yellowBox.append(moveDiv);
+};
+
 addUser.addEventListener("click", addUserFunction);
+deleteUser.addEventListener("click", removeUserFunction);
+
+moveToRed.addEventListener("click", moveToRedFunction);
+moveToGreen.addEventListener("click", moveToGreenFunction);
+moveToBlue.addEventListener("click", moveToBlueFunction);
+moveToYellow.addEventListener("click", moveToYellowFunction);
