@@ -5,6 +5,10 @@
   border-radius: 5px;
 }
 
+.section {
+  display: flex;
+}
+
 .box {
   width: 50%;
   height: 150px;
@@ -14,23 +18,19 @@
   border-radius: 5px;
 }
 
-.section {
-  display: flex;
-}
-
-.red-box {
+#red-box {
   background-color: red;
 }
 
-.green-box {
+#green-box {
   background-color: green;
 }
 
-.blue-box {
+#blue-box {
   background-color: blue;
 }
 
-.yellow-box {
+#yellow-box {
   background-color: yellow;
 }
 
@@ -47,7 +47,7 @@
   height: 30px;
 }
 
-.input-area {
+#input-area {
   margin: 10px;
   width: 200px;
   height: 20px;
@@ -57,4 +57,13 @@
 .input-div {
   display: flex;
   justify-content: center;
+}
+
+.move-div {
+  padding: 7px;
+  background-color: black;
+  color: white;
+  font-weight: 16px;
+  border-radius: 7px;
+  border: 1px solid white;
 }
