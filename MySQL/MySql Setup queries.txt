@@ -31,3 +31,22 @@ CREATE TABLE classes(
     PRIMARY KEY(id),
     FOREIGN KEY(teacher_id) REFERENCES teachers(id)
 )
+
+------------
+
+CRUD
+
+--> C - CREATE
+INSERT INTO teachers(mobile, teacher_name) VALUES('12345', 'harsh gupta');
+
+--> R - RETRIEVE
+SELECT * FROM `teachers`;
+
+--> U - UPDATE
+UPDATE `teachers` SET mobile = '22222';
+
+--> D - DELETE
+DELETE FROM `teachers`;
+
+
+TRUNCATE TABLE classes;  --> it resets the whole table
