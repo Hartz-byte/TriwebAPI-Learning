@@ -1,0 +1,33 @@
+<--TABLE CREATION-->
+--> CREATE
+CREATE TABLE `learning`.`users` (`ID` INT(11) NOT NULL AUTO_INCREMENT , `Name` VARCHAR(255) NOT NULL , `Email` VARCHAR(255) NOT NULL , `Password` VARCHAR(255) NOT NULL , `Remark` VARCHAR(255) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;
+
+--> INSERT
+INSERT INTO `users`(`Name`, `Email`, `Password`, `Remark`) VALUES ('Harsh','harsh@gmail.com','123','ok')
+
+--> SELECT
+SELECT * FROM `users`;
+
+--> UPDATE
+UPDATE `users` SET `Password`='abcd' WHERE `Email`='harsh@gmail.com';
+
+--> DELETE
+DELETE FROM `users` WHERE `Email`='harsh@gmail.com'
+
+
+
+<--DATABASE CREATION-->
+--> CREATE DATABASE
+CREATE DATABASE practice_2;
+
+--> USE DATABASE
+USE practice_2;
+
+--> create table with FOREIGN KEY REFERENCES
+CREATE TABLE classes(
+	id int(11) NOT null AUTO_INCREMENT,
+    class_name varchar(255) NOT null,
+    teacher_id int(11) NOT null,
+    PRIMARY KEY(id),
+    FOREIGN KEY(teacher_id) REFERENCES teachers(id)
+)
