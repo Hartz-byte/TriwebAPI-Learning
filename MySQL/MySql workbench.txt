@@ -113,3 +113,24 @@ group by class_id
 --> show number of students in each class
 select count(*) from students
 group by class_id
+
+
+--> having (for aggregate function)
+select class_id, count(*) as number_of_students from students
+group by class_id
+having number_of_students > 1
+
+
+
+--> created a table for duplication
+create table teachers_dup(
+id int not null,
+teacher_name varchar(255) not null,
+mobile varchar(100) not null,
+salary int
+)
+
+--> insert record from teachers table to teachers_dup table
+insert into teachers_dup(id, teacher_name, mobile, salary)
+select id, teacher_name, mobile, salary from teachers
+where id = 2
