@@ -70,3 +70,8 @@ SELECT te.teacher_name, cl.class_name
 FROM teachers te
 INNER JOIN classes cl ON te.id = cl.id
 WHERE te.id = 2;
+
+SELECT te.teacher_name, cl.class_name AS ClassTeacher
+FROM teachers te
+INNER JOIN classes cl ON te.id = cl.id
+WHERE te.id = 2;
