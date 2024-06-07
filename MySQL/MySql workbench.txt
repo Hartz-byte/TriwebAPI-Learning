@@ -31,5 +31,23 @@ primary key(id),
 foreign key(class_id) references classes(id)
 )
 
---> INSERTING IN TABLE teachers
+--> INSERTING IN TABLE teachers, USING MULTIPLE RECORDS
 insert into teachers(teacher_name, mobile, salary) values('teacher 1', '1', 1000), ('teacher 2', '2', 2000), ('teacher 3', '3', 3000)
+
+--> INSERTING IN TABLE OF ONE ROW BUT THE WHOLE VALUES AS ONE
+insert into teachers values(4, 'teacher 4', '4', 4000)
+
+--> INSERTING IN TABLE classes, WITH MULTIPLE RECORDS AND ALSO REGARDS TO THE FOREIGN KEY
+insert into classes(class_name, teacher_id) values('class one', 1), ('class two', 2), ('class three', 3), ('class four', 4)
+
+--> INSERTING IN TABLE students, WITH MULTIPLE RECORDS AND ALSO REGARDS TO THE FOREIGN KEY
+insert into students(student_name, mobile, class_id) values('student 1', '11', 1), ('student 2', '22', 3), ('student 3', '33', 2), ('student 4', '44', 4), ('student 5', '55', 2), ('student 6', '66', 3);
+
+--> <> implies to not (not 6)
+select * from students where class_id <> 6
+
+--> arrange in ascending order
+select * from students where class_id <> 6 order by class_id
+
+--> arrange in descending order
+select * from students where class_id <> 6 order by class_id desc
