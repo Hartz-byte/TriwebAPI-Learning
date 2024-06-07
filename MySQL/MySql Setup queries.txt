@@ -41,6 +41,13 @@ INSERT INTO teachers(mobile, teacher_name) VALUES('12345', 'harsh gupta');
 
 --> R - RETRIEVE
 SELECT * FROM `teachers`;
+SELECT * FROM `teachers` WHERE teacher_id = 2;
+SELECT * FROM `teachers` WHERE teacher_id = 2 and mobile = 1155;
+SELECT * FROM `teachers` WHERE teacher_id = 2 OR teacher_id = 3;
+SELECT * FROM `teachers` WHERE teacher_id IN (2,3);
+SELECT student_name FROM students` WHERE id = 1;
+SELECT student_name, mobile FROM `students` WHERE id = 1;
+SELECT student_name as NameOfStudent, mobile as MbileNumber FROM `students` WHERE id = 1; 
 
 --> U - UPDATE
 UPDATE `teachers` SET mobile = '22222';
@@ -50,3 +57,16 @@ DELETE FROM `teachers`;
 
 
 TRUNCATE TABLE classes;  --> it resets the whole table
+
+--> CREATING AN OBJECT OF THE TABLE
+SELECT st.* FROM students st WHERE id = 2;
+
+SELECT *
+FROM teachers te
+INNER JOIN classes cl ON te.id = cl.id
+WHERE te.id = 2;
+
+SELECT te.teacher_name, cl.class_name
+FROM teachers te
+INNER JOIN classes cl ON te.id = cl.id
+WHERE te.id = 2;
