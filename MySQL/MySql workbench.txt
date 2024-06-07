@@ -51,3 +51,65 @@ select * from students where class_id <> 6 order by class_id
 
 --> arrange in descending order
 select * from students where class_id <> 6 order by class_id desc
+
+
+
+--> limit (shows only the desired number of datas)
+select * from students where class_id = 5 limit 2
+
+--> max (shows the max salary from all)
+select max(salary) from teachers;
+
+--> min (shows the min salary from all)
+select min(salary) from teachers;
+
+--> count (shows the total)
+select count(id) from teachers;
+
+--> avg (shows the avg of all)
+select avg(salary) from teachers;
+
+--> sum (shows the sum of all)
+select sum(salary) from teachers;
+
+
+--> LIKE operator "_" for single char, "%" for multiple char
+select * from students where student_name like 'student%'
+
+--> to display all students from class 1,5 and 6 (in operator)
+select * from students where class_id in(1,5,6)
+
+--> 2nd highest salary (not in operator)
+select max(salary) from teachers where salary not in (select max(salary) from teachers)
+
+
+--> between
+select * from teachers where salary between 2000 and 5000
+
+
+--> JOINS - left join, right join, inner join, and cross join
+
+--> left join
+select *
+from classes cl
+left join teachers tr on cl.teacher_id = tr.id
+
+
+--> LEFT JOIN
+select cl.class_name, tr.teacher_name as class_teacher
+from classes cl
+left join teachers tr on cl.teacher_id = tr.id
+
+
+--> union
+select student_name from students
+union
+select teacher_name from teachers
+
+--> group
+select * from students
+group by class_id
+
+--> show number of students in each class
+select count(*) from students
+group by class_id
