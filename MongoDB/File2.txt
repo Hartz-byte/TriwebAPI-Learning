@@ -1,0 +1,141 @@
+---> CREATING A NEW DATABASE OF NAME "jsdb"
+mongosh "mongodb+srv://learningcluster.szucrmi.mongodb.net/jsdb" --apiVersion 1 --username Hartz-byte
+
+
+
+---> INSERTING SINGLE ARRAY DATA IN "customer" DB
+db.customer.insertOne({cname:"Amit"})
+
+result:
+{
+  acknowledged: true,
+  insertedId: ObjectId("6666d13032d828648873acca")
+}
+
+
+
+---> TO SHOW ALL DATA
+db.customer.find({})
+
+result:
+[ { _id: ObjectId("6666d13032d828648873acca"), cname: 'Amit' } ]
+
+
+
+---> INSER MANY DATA IN "books" DB
+db.books.insertMany([{bookname: "book 1", price: 200}, {bookname: "book 2", price: 400},{bookname:"book 3", price: "700"}])
+
+result:
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6666d2ba32d828648873accb"),
+    '1': ObjectId("6666d2ba32d828648873accc"),
+    '2': ObjectId("6666d2ba32d828648873accd")
+  }
+}
+
+
+
+---> UPDATING "customer" TO ADD "favBooks"
+db.customer.updateOne({_id: ObjectId("6666d13032d828648873acca")}, {$set:{favBooks:[ObjectId("6666d2ba32d828648873accb"),ObjectId("6666d2ba32d828648873accc")]}})
+
+result:
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+
+
+---> TO CHECK THE UPDATED RECORD OF "customer" NAMED Amit
+db.customer.find({cname: "Amit"})
+
+result:
+[
+  {
+    _id: ObjectId("6666d13032d828648873acca"),
+    cname: 'Amit',
+    favBooks: [
+      ObjectId("6666d2ba32d828648873accb"),
+      ObjectId("6666d2ba32d828648873accc")
+    ]
+  }
+]
+
+
+
+---> INSERTING ANOTHER CUSRTOMER NAME Aditya WITH  favBooks
+db.customer.insertOne({cname: "Aditya", favBooks: [ObjectId("6666d2ba32d828648873accd")]})
+
+result:
+{
+  acknowledged: true,
+  insertedId: ObjectId("6666d57732d828648873acce")
+}
+
+
+
+---> SHOW ALL DATA OF "customer"
+db.customer.find()
+
+result:
+[
+  {
+    _id: ObjectId("6666d13032d828648873acca"),
+    cname: 'Amit',
+    favBooks: [
+      ObjectId("6666d2ba32d828648873accb"),
+      ObjectId("6666d2ba32d828648873accc")
+    ]
+  },
+  {
+    _id: ObjectId("6666d57732d828648873acce"),
+    cname: 'Aditya',
+    favBooks: [ ObjectId("6666d2ba32d828648873accd") ]
+  }
+]
+
+
+
+---> TO JOIN TWO DATASET (table) INSIDE A DB  (using aggregate and $lookup)
+db.customer.aggregate([{$lookup: {from: "books", localField: "favBooks", foreignField: "_id", as: "FovoriteBookData"}}])
+
+result:
+[
+  {
+    _id: ObjectId("6666d13032d828648873acca"),
+    cname: 'Amit',
+    favBooks: [
+      ObjectId("6666d2ba32d828648873accb"),
+      ObjectId("6666d2ba32d828648873accc")
+    ],
+    FovoriteBookData: [
+      {
+        _id: ObjectId("6666d2ba32d828648873accc"),
+        bookname: 'book 2',
+        price: 400
+      },
+      {
+        _id: ObjectId("6666d2ba32d828648873accb"),
+        bookname: 'book 1',
+        price: 200
+      }
+    ]
+  },
+  {
+    _id: ObjectId("6666d57732d828648873acce"),
+    cname: 'Aditya',
+    favBooks: [ ObjectId("6666d2ba32d828648873accd") ],
+    FovoriteBookData: [
+      {
+        _id: ObjectId("6666d2ba32d828648873accd"),
+        bookname: 'book 3',
+        price: '700'
+      }
+    ]
+  }
+]
