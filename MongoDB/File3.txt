@@ -1,0 +1,116 @@
+---> CREATING A CUSTOM COLLECTION WITH OUR RESTRICTIONS AND RULES
+db.createCollection('products',
+    {validator: {
+        $jsonSchema:{
+            bsonType: 'object',
+            required: ['title', 'pname', 'owner', 'comments'],
+            properties: {
+                title: {
+                    bsonType: 'string',
+                    description: 'title must be of string type'
+                },
+                pname: {
+                    bsonType: 'string',
+                    description: 'pname must be of string type'
+                },
+                owner: {
+                    bsonType: 'objectId',
+                    description: 'owner must be of objectId type'
+                },
+                comments: {
+                    bsonType: 'string',
+                    description: 'comments must be of string type'
+                },
+            }
+        }
+    }
+})
+
+
+
+---> INSERTING ONE ARRAY DATA IN "products" COLLECTION
+db.products.insertOne({title: "my product", pname: "product001", owner: ObjectId("6666d13032d828648873acca"), comments: "hello there!"})
+
+result:
+{
+  acknowledged: true,
+  insertedId: ObjectId("6666e12432d828648873acd0")
+}
+
+
+
+---> TO DISPLAY THE "products" DATA 
+db.products.find()
+
+result:
+[
+  {
+    _id: ObjectId("6666e12432d828648873acd0"),
+    title: 'my product',
+    pname: 'product001',
+    owner: ObjectId("6666d13032d828648873acca"),
+    comments: 'hello there!'
+  }
+]
+
+
+
+---> INSERTING MANY DATAS
+db.products.insertMany([{title: "my product 1", pname: "product001", owner: ObjectId("6666d13032d828648873acca"), comments: "hello there!"}, {title: "my product 2", pname: "product002", owner: ObjectId("6666d13032d828648873acca"), comments: "hello there!"}, {title: "my product 3", pname: "product003", owner: ObjectId("6666d13032d828648873acca"), comments: "hello there!"}], {ordered: false})
+
+result:
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6666e2c832d828648873acd1"),
+    '1': ObjectId("6666e2c832d828648873acd2"),
+    '2': ObjectId("6666e2c832d828648873acd3")
+  }
+}
+
+
+
+---> TO FIND SOME SPECIFIC DATA
+db.books.find({price:200})
+
+result:
+[
+  {
+    _id: ObjectId("6666d2ba32d828648873accb"),
+    bookname: 'book 1',
+    price: 200
+  }
+]
+
+
+
+---> USING in
+db.books.find({price:{$in:[200, 600]}})
+
+result:
+[
+  {
+    _id: ObjectId("6666d2ba32d828648873accb"),
+    bookname: 'book 1',
+    price: 200
+  },
+  {
+    _id: ObjectId("6666d2ba32d828648873accc"),
+    bookname: 'book 2',
+    price: 400
+  },
+]
+
+
+
+---> USING not in (nin)
+db.books.find({price:{$nin:[200, 600]}})
+
+result:
+[
+  {
+    _id: ObjectId("6666d2ba32d828648873accd"),
+    bookname: 'book 3',
+    price: '700'
+  }
+]
