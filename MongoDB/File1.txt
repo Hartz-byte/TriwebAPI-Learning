@@ -1,0 +1,138 @@
+---> TO INSERT SINGLE ARRAY DATA
+db.myfirstcollection.insertOne({name: "Harsh",mobile: "1234"})
+
+result:
+{
+  acknowledged: true,
+  insertedId: ObjectId("6666b6cefb41b4f232f5a74c")
+}
+
+
+
+---> TO INSERT MULTIPLE ARRAY DATA
+db.myfirstcollection.insertMany([{name: "Rahul",email: "rahul@gmail.com"},{name:"charvi", email:"charvi@gmail.com",location:"dehradun"}])
+
+result:
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6666b775fb41b4f232f5a74d"),
+    '1': ObjectId("6666b775fb41b4f232f5a74e")
+  }
+}
+
+
+
+---> TO SHOW ALL DATABASE
+show dbs
+
+result:
+mydb            8.00 KiB
+sample_mflix  113.67 MiB
+test           72.00 KiB
+admin         336.00 KiB
+local          78.57 GiB
+
+
+
+---> FIND WILL SHOW ALL DATA IN THAT DATABASE
+db.myfirstcollection.find()
+
+result:
+[
+  {
+    _id: ObjectId("6666b6cefb41b4f232f5a74c"),
+    name: 'Harsh',
+    mobile: '1234'
+  },
+  {
+    _id: ObjectId("6666b775fb41b4f232f5a74d"),
+    name: 'Rahul',
+    email: 'rahul@gmail.com'
+  },
+  {
+    _id: ObjectId("6666b775fb41b4f232f5a74e"),
+    name: 'charvi',
+    email: 'charvi@gmail.com',
+    location: 'dehradun'
+  }
+]
+
+
+
+---> TO SPECIFIC FIND, USE KEY WITH VALUE
+db.myfirstcollection.find({name:"Harsh"})
+
+result:
+[
+  {
+    _id: ObjectId("6666b6cefb41b4f232f5a74c"),
+    name: 'Harsh',
+    mobile: '1234'
+  }
+]
+
+
+
+---> TO UPDATE A SINGLE DATA
+db.myfirstcollection.updateOne({name:"Harsh"}, {$set:{mobile: 2222}})
+
+result:
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+
+
+---> VIEW UPDATED DATA
+db.myfirstcollection.find({name:"Harsh"})
+
+result:
+[
+  {
+    _id: ObjectId("6666b6cefb41b4f232f5a74c"),
+    name: 'Harsh',
+    mobile: 2222
+  }
+]
+
+
+
+---> TO DELETE SINGLE DATA
+db.myfirstcollection.deleteOne({name:"Harsh"})
+
+result:
+{ acknowledged: true, deletedCount: 1 }
+
+
+
+---> VIEW ALL DATA
+db.myfirstcollection.find()
+
+result: 
+[
+  {
+    _id: ObjectId("6666b775fb41b4f232f5a74d"),
+    name: 'Rahul',
+    email: 'rahul@gmail.com'
+  },
+  {
+    _id: ObjectId("6666b775fb41b4f232f5a74e"),
+    name: 'charvi',
+    email: 'charvi@gmail.com',
+    location: 'dehradun'
+  }
+]
+
+
+
+---> TO DELETE ALL DATA
+db.myfirstcollection.deleteMany({})
+
+result:
+{ acknowledged: true, deletedCount: 2 }
+
