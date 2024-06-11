@@ -7,7 +7,7 @@ This repository is your one-stop shop for learning the fundamentals of full-stac
 
 ## Content Table
 
-1. [HTML](HTML/form/README.md) : The building block of web pages, defining the structure and content.
+1. [HTML](HTML/Form/README.md) : The building block of web pages, defining the structure and content.
 2. [CSS](CSS/README.md) : Styles your web pages, giving them visual appeal and responsiveness.
 3. [JavaScript](JavaScript/README.md) : The heart of interactive web experiences, adding functionality and behavior.
 4. [ES2020 (ES6)](ES2020/README.md) : Modern JavaScript features for cleaner, more concise code.
