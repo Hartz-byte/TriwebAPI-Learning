@@ -1,3 +1,6 @@
+![Banner](TriwebAPI.jpg)
+
+
 # Full-Stack Development Learning Journey
 
 This repository is your one-stop shop for learning the fundamentals of full-stack web development. It encompasses the essential technologies that power modern web applications:
