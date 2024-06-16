@@ -20,7 +20,7 @@ const User = sequelize.define("user", {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  remarks: STRING,
+  remarks: Sequelize.STRING,
 });
 
 module.exports = User;
