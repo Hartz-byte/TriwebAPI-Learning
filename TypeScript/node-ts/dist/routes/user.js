@@ -8,4 +8,5 @@ const express_1 = __importDefault(require("express"));
 const user_1 = require("../controllers/user");
 const router = express_1.default.Router();
 router.post("/register", user_1.registerUser);
+router.post("/update", user_1.checkTypesInteface);
 exports.default = router;
