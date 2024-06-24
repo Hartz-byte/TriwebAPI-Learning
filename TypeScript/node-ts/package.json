@@ -1,0 +1,18 @@
+{
+  "name": "node-ts",
+  "version": "1.0.0",
+  "description": "nodejs, mongodb, ts",
+  "main": "app.js",
+  "author": "Harsh Gupta",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "start:dev": "nodemon start"
+  }
+}
