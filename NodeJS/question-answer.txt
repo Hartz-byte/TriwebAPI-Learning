@@ -1,0 +1,37 @@
+1. Event Loop and Asynchronous Programming:
+Question: Explain how Node.js achieves concurrency in a single-threaded environment using the event loop and asynchronous programming.
+Answer: Node.js utilizes a single-threaded event loop to handle I/O operations efficiently. When a request arrives, the event loop checks for synchronous tasks in the call stack. If none exist, it moves to the event queue, where asynchronous operations like database calls or network requests are placed. While the I/O operation is ongoing, the event loop can process other requests, improving overall performance. Once an asynchronous operation completes, a callback is added to a separate callback queue. The event loop, after finishing synchronous tasks, processes callbacks in the order they were added, ensuring the correct execution order.
+
+
+2. Object Destructuring:
+Question: Write a function that takes an object with properties name and age and returns a new object with just the name property using object destructuring.
+Answer:
+function getName(person) {
+  const { name } = person;
+  return name;
+}
+
+
+3. Closures:
+Question: Explain what closures are and how they can be useful in Node.js applications.
+Answer: A closure is a function that has access to the variable environment of its outer function, even after the outer function has returned. This allows the inner function to remember and manipulate variables from the outer scope. Closures are valuable in Node.js for creating private variables within modules, implementing event listeners that retain state, and creating functions with customized behavior based on captured variables.
+
+
+4. setImmediate(), setTimeout(), and nextTick():
+Question: Describe the differences and use cases for setImmediate(), setTimeout(), with an example for each. When might you use nextTick()?
+Answer:
+setImmediate(): Schedules a callback function to be placed at the end of the current event loop iteration's callback queue. It has slightly lower priority than setTimeout(..., 0). Useful for tasks that should be executed after the current I/O polling phase but before the next iteration of the event loop begins.
+setTimeout(): Schedules a callback function to be placed in the callback queue after the specified delay (in milliseconds). Ideal for tasks that need to be delayed for a certain amount of time.
+nextTick(): Schedules a callback function to be placed at the beginning of the next iteration of the event loop's callback queue. It offers the highest priority among these options. Use nextTick() sparingly, as overuse can lead to performance issues.
+
+
+5. Error Handling and Callback Hell:
+Question: Discuss strategies for handling errors in asynchronous Node.js applications and how to avoid callback hell.
+Answer:
+Error Handling:
+Employ try...catch blocks to capture errors within asynchronous functions.
+Use middleware in frameworks like Express to handle errors centrally.
+Avoiding Callback Hell:
+Leverage promises or async/await for cleaner asynchronous code flow.
+Structure your code with clear error handling mechanisms.
+Use libraries like Bluebird or Q to improve promise management.
