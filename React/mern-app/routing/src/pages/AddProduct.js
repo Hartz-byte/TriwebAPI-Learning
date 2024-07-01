@@ -1,6 +1,9 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddProduct() {
+  const navigate = useNavigate();
+
   const product_name_ref = useRef();
   const image_ref = useRef();
   const price_ref = useRef();
@@ -11,21 +14,23 @@ function AddProduct() {
     const product_name = product_name_ref.current.value;
     const image = image_ref.current.value;
     const price = price_ref.current.value;
-    const textarea = textarea_ref.current.value;
+    const description = textarea_ref.current.value;
 
     const product = {
       product_name,
       image,
       price,
-      textarea,
+      description,
     };
-    console.log(product);
+    // console.log(product);
 
-    fetch("localhost:3002/product", {
+    fetch("http://localhost:3002/product", {
       method: "POST",
-      body: product,
+      body: JSON.stringify(product),
       headers: { "Content-Type": "application/json" },
-    });
+    })
+      .then((response) => navigate("/", { replace: true }))
+      .catch((error) => console.log(error));
   };
 
   return (
