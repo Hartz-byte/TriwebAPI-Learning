@@ -5,20 +5,23 @@ import Contact from "./pages/Contact";
 import Product from "./pages/Product";
 import MainMenu from "./components/layouts/MainMenu";
 import AddProduct from "./pages/AddProduct";
+import { ContextFav } from "./store/contextFav";
 
 function App() {
   return (
-    <BrowserRouter>
-      <MainMenu />
+    <ContextFav>
+      <BrowserRouter>
+        <MainMenu />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/product" element={<Product />} />
-        <Route path="/product/add" element={<AddProduct />} />
-      </Routes>
-    </BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/product/add" element={<AddProduct />} />
+        </Routes>
+      </BrowserRouter>
+    </ContextFav>
   );
 }
 
