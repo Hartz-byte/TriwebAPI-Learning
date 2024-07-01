@@ -20,6 +20,12 @@ function AddProduct() {
       textarea,
     };
     console.log(product);
+
+    fetch("localhost:3002/product", {
+      method: "POST",
+      body: product,
+      headers: { "Content-Type": "application/json" },
+    });
   };
 
   return (
