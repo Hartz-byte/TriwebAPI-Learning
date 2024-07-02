@@ -14,7 +14,7 @@ mongoose
   .then(() => {
     console.log("Connected to MongoDB");
 
-    app.listen(3000, (err) => {
+    app.listen(3002, (err) => {
       if (err) {
         console.error(err);
       } else {
