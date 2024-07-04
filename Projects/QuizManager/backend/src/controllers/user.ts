@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 import User from "../models/user";
 
@@ -95,4 +96,37 @@ const updateUser = async (req: Request, res: Response) => {
   }
 };
 
-export { registerUser, getUser, updateUser };
+const loginUser = async (req: Request, res: Response) => {
+  let resp: ReturnResponse;
+
+  try {
+    const email = req.body.email;
+    const password = req.body.password;
+    // console.log(email, password);
+
+    const user = await User.findOne({ email });
+
+    if (user) {
+      const status = await bcrypt.compare(password, user.password);
+
+      if (status) {
+        const token = jwt.sign({ userId: user._id }, "secretkey", {
+          expiresIn: "1h",
+        });
+
+        resp = { status: "success", message: "Logged in.", data: { token } };
+      } else {
+        resp = { status: "error", message: "Credentials mismatch", data: {} };
+      }
+      res.send(resp);
+    } else {
+      res.status(401).send("User not found");
+    }
+  } catch (err) {
+    console.log(err);
+    resp = { status: "error", message: "Something went wrong", data: {} };
+    res.status(500).send(resp);
+  }
+};
+
+export { registerUser, getUser, updateUser, loginUser };
