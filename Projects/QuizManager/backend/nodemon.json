@@ -1,0 +1,9 @@
+{
+  "env": {
+    "CONNECTION_STRING": "mongodb+srv://Hartz-byte:Hrshg%40%40123@cluster0.hr6ptoa.mongodb.net/workshopdb?retryWrites=true&w=majority",
+    "PORT": 3002
+  },
+  "watch": ["src"],
+  "ext": "ts, json",
+  "exec": "ts-node ./src/app.ts"
+}

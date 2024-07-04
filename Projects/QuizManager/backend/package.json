@@ -6,7 +6,9 @@
   "author": "Harsh Gupta",
   "license": "MIT",
   "dependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/express": "^4.17.21",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "mongoose": "^8.4.4",
@@ -14,6 +16,12 @@
   },
   "scripts": {
     "build": "tsc --noEmitOnError",
-    "start": "node ./dist/app.js"
+    "start": "node ./dist/app.js",
+    "start:ts": "ts-node ./src/app.ts",
+    "start:dev": "nodemon ./src/app.ts"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2"
   }
 }

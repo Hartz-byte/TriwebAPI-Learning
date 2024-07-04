@@ -3,11 +3,7 @@ import mongoose from "mongoose";
 
 import UserRoute from "./routes/user";
 
-// const connectionString =
-//   "mongodb+srv://Hartz-byte:Hrshg%40%40123@cluster0.hr6ptoa.mongodb.net/workshopdb?retryWrites=true&w=majority&appName=Cluster0";
-
-const connectionString =
-  "mongodb+srv://Hartz-byte:Hrshg%40%40123@cluster0.hr6ptoa.mongodb.net/workshopdb?retryWrites=true&w=majority";
+const connectionString = process.env.CONNECTION_STRING || "";
 
 const app = express();
 
@@ -19,23 +15,11 @@ app.get("/", (req, res) => {
 
 app.use("/user", UserRoute);
 
-// mongoose.connect(connectionString).then(() => {
-//   console.log("Connected to MongoDB!");
-// });
-
-// // mongoose.connection.on("open", () => {
-// //   console.log("Connected to MongoDB!");
-// // });
-
-// app.listen(3002, () => {
-//   console.log("Server connected!");
-// });
-
 const startServer = async () => {
   try {
     await mongoose.connect(connectionString);
     console.log("Connected to MongoDB!");
-    app.listen(3002, () => {
+    app.listen(process.env.PORT, () => {
       console.log("Server connected!");
     });
   } catch (err) {
