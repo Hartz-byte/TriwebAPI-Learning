@@ -1,7 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 
-import UserRoute from "./routes/user";
+import userRoute from "./routes/user";
+import authRoute from "./routes/auth";
 
 const connectionString = process.env.CONNECTION_STRING || "";
 
@@ -13,7 +14,11 @@ app.get("/", (req, res) => {
   res.send("Welcome!!");
 });
 
-app.use("/user", UserRoute);
+// /user to userRoute
+app.use("/user", userRoute);
+
+// /auth to authRoute
+app.use("/auth", authRoute);
 
 const startServer = async () => {
   try {

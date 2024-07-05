@@ -1,23 +1,16 @@
 import express from "express";
-import {
-  registerUser,
-  getUser,
-  updateUser,
-  loginUser,
-} from "../controllers/user";
+import { getUser, updateUser } from "../controllers/user";
 
 const router = express.Router();
 
-// POST /user/
-router.post("/", registerUser);
-
+// user should be authorized
+// user should be authenticated
 // GET /user/:userId
 router.get("/:userId", getUser);
 
+// user should be authorized
+// user should be authenticated
 // PUT /user/
 router.put("/", updateUser);
-
-// POST /user/login
-router.post("/login", loginUser);
 
 export default router;
