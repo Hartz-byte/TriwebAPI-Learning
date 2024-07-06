@@ -10,6 +10,14 @@ const app = express();
 
 app.use(express.json());
 
+declare global {
+  namespace Express {
+    interface Request {
+      userId: String | undefined;
+    }
+  }
+}
+
 app.get("/", (req, res) => {
   res.send("Welcome!!");
 });
