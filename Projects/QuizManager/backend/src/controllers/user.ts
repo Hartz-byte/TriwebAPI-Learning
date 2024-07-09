@@ -1,14 +1,15 @@
 import { Request, Response, NextFunction } from "express";
 
 import User from "../models/user";
+import ProjectError from "../helper/error";
 
 interface ReturnResponse {
   status: "success" | "error";
   message: String;
-  data: {};
+  data: {} | [];
 }
 
-const getUser = async (req: Request, res: Response) => {
+const getUser = async (req: Request, res: Response, next: NextFunction) => {
   let resp: ReturnResponse;
 
   console.log(req.userId);
@@ -18,8 +19,8 @@ const getUser = async (req: Request, res: Response) => {
     console.log("userId: ", userId);
 
     if (req.userId != req.params.userId) {
-      const err = new Error("You are not authorized.");
-      // err.statusCode
+      const err = new ProjectError("You are not authorized.");
+      err.statusCode = 401;
       throw err;
     }
 
@@ -39,8 +40,7 @@ const getUser = async (req: Request, res: Response) => {
       res.send(resp);
     }
   } catch (err) {
-    resp = { status: "error", message: "Something went wrong", data: {} };
-    res.status(500).send(resp);
+    next(err);
   }
 };
 
@@ -49,7 +49,7 @@ const updateUser = async (req: Request, res: Response) => {
 
   try {
     if (req.userId != req.body._id) {
-      const err = new Error("You are not authorized.");
+      const err = new ProjectError("You are not authorized.");
       // err.statusCode
       throw err;
     }

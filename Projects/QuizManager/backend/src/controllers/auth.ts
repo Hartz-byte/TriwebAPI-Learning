@@ -7,10 +7,14 @@ import User from "../models/user";
 interface ReturnResponse {
   status: "success" | "error";
   message: String;
-  data: {};
+  data: {} | [];
 }
 
-const registerUser = async (req: Request, res: Response) => {
+const registerUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   let resp: ReturnResponse;
 
   try {
@@ -35,12 +39,11 @@ const registerUser = async (req: Request, res: Response) => {
       res.send(resp);
     }
   } catch (err) {
-    resp = { status: "error", message: "Something went wrong", data: {} };
-    res.status(500).send(resp);
+    next(err);
   }
 };
 
-const loginUser = async (req: Request, res: Response) => {
+const loginUser = async (req: Request, res: Response, next: NextFunction) => {
   let resp: ReturnResponse;
 
   try {
@@ -65,9 +68,7 @@ const loginUser = async (req: Request, res: Response) => {
       res.status(401).send("User not found");
     }
   } catch (err) {
-    console.log(err);
-    resp = { status: "error", message: "Something went wrong", data: {} };
-    res.status(500).send(resp);
+    next(err);
   }
 };
 
