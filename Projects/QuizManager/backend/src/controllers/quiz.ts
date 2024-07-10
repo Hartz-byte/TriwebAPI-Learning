@@ -1,16 +1,33 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 
 import Quiz from "../models/quiz";
 
-const createQuiz = async (req: Request, res: Response) => {
-  const created_by = req.userId;
-  const name = req.body.name;
-  const questions_list = req.body.question_list;
-  const answers = req.body.answers;
+interface ReturnResponse {
+  status: "success" | "error";
+  message: String;
+  data: {} | [];
+}
 
-  const quiz = new Quiz({ name, questions_list, answers, created_by });
-  await quiz.save();
-  res.send(req.body);
+const createQuiz = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const created_by = req.userId;
+    const name = req.body.name;
+    const questions_list = req.body.questions_list;
+    const answers = req.body.answers;
+
+    const quiz = new Quiz({ name, questions_list, answers, created_by });
+    const result = await quiz.save();
+
+    const resp: ReturnResponse = {
+      status: "success",
+      message: "quiz created successfully",
+      data: { quizId: result._id },
+    };
+
+    res.status(201).send(resp);
+  } catch (error) {
+    next(error);
+  }
 };
 
 const getQuiz = (req: Request, res: Response) => {
