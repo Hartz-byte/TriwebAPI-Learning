@@ -23,7 +23,7 @@ const getReport = async (req: Request, res: Response, next: NextFunction) => {
         throw err;
       }
     } else {
-      report = await Report.findById({ userId: req.userId });
+      report = await Report.find({ userId: req.userId });
     }
 
     if (!report) {
