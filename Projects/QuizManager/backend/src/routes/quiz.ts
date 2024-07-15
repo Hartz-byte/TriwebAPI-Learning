@@ -1,5 +1,7 @@
 import express from "express";
+import { body } from "express-validator";
 
+import { isAuthenticated } from "../middlewares/isAuth";
 import {
   createQuiz,
   getQuiz,
@@ -7,18 +9,69 @@ import {
   deleteQuiz,
   publishQuiz,
 } from "../controllers/quiz";
-import { isAuthenticated } from "../middlewares/isAuth";
 
 const router = express.Router();
 
 // created PUT
-router.post("/", isAuthenticated, createQuiz);
+router.post(
+  "/",
+  isAuthenticated,
+  [
+    body("name")
+      .trim()
+      .not()
+      .isEmpty()
+      .isLength({ min: 10 })
+      .withMessage(
+        "Please enter your valid name, minimum 10 characters required."
+      ),
+    body("questions_list").custom((questions_list) => {
+      if (questions_list.length == 0) {
+        return Promise.reject("Enter at least one question.");
+      }
+      return true;
+    }),
+    body("answers").custom((answers) => {
+      if (Object.keys(answers).length == 0) {
+        return Promise.reject("Answers should not be empty.");
+      }
+      return true;
+    }),
+  ],
+  createQuiz
+);
 
 // GET
 router.get("/:quizId", isAuthenticated, getQuiz);
 
 // updated PUT
-router.put("/", isAuthenticated, updateQuiz);
+router.put(
+  "/",
+  isAuthenticated,
+  [
+    body("name")
+      .trim()
+      .not()
+      .isEmpty()
+      .isLength({ min: 10 })
+      .withMessage(
+        "Please enter your valid name, minimum 10 characters required."
+      ),
+    body("questions_list").custom((questions_list) => {
+      if (questions_list.length == 0) {
+        return Promise.reject("Enter at least one question.");
+      }
+      return true;
+    }),
+    body("answers").custom((answers) => {
+      if (Object.keys(answers).length == 0) {
+        return Promise.reject("Answers should not be empty.");
+      }
+      return true;
+    }),
+  ],
+  updateQuiz
+);
 
 // deleted DELETE
 router.delete("/:quizId", isAuthenticated, deleteQuiz);

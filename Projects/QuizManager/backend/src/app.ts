@@ -5,6 +5,7 @@ import { Request, Response, NextFunction } from "express";
 import userRoute from "./routes/user";
 import authRoute from "./routes/auth";
 import quizRoute from "./routes/quiz";
+import examRoute from "./routes/exam";
 import ProjectError from "./helper/error";
 
 interface ReturnResponse {
@@ -39,6 +40,9 @@ app.use("/auth", authRoute);
 
 // /auth to quizRoute
 app.use("/quiz", quizRoute);
+
+// /exam to examRoute
+app.use("/exam", examRoute);
 
 app.use(
   (err: ProjectError, req: Request, res: Response, next: NextFunction) => {
