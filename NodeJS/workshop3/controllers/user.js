@@ -13,7 +13,7 @@ module.exports.register = async (req, res) => {
 // get
 module.exports.get = async (req, res) => {
   try {
-    let data = await userModel.findByPk(req.body.id);
+    let data = await userModel.findById(req.body.id);
     res.send({ status: "success", data: data });
   } catch (err) {
     res.send({ status: "error", message: "User not found" });
@@ -23,7 +23,7 @@ module.exports.get = async (req, res) => {
 // update
 module.exports.update = async (req, res) => {
   try {
-    let user = await userModel.findByPk(req.body.id);
+    let user = await userModel.findById(req.body.id);
     user.password = req.body.password;
     await user.save();
 
@@ -36,7 +36,7 @@ module.exports.update = async (req, res) => {
 // delete
 module.exports.delete = async (req, res) => {
   try {
-    let user = await userModel.findByPk(req.body.id);
+    let user = await userModel.findById(req.body.id);
     await user.destroy();
 
     res.send({ status: "success", message: "user deleted" });

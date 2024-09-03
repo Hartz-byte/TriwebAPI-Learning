@@ -1,10 +1,10 @@
-import Game from "./components/Game";
+import TicTacToe from "./components/TicTacToe";
 
 function App() {
   return (
-    <>
-      <Game />
-    </>
+    <div>
+      <TicTacToe />
+    </div>
   );
 }
 
