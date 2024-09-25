@@ -1,0 +1,16 @@
+What is a Queue?
+A queue is a linear data structure that follows the First In, First Out (FIFO) principle. This means that the first element added to the queue will be the first one to be removed.
+
+How Does a Queue Work?
+Enqueue: Adds an element to the rear of the queue.
+Dequeue: Removes an element from the front of the queue.
+Peek/Front: Retrieves the front element without removing it.
+IsEmpty: Checks whether the queue is empty.
+
+Why Do We Use Queues?
+Queues are used in scenarios where order needs to be preserved and tasks need to be processed in the order they arrive.
+
+Applications of Queues:
+1. Task Scheduling: In operating systems, processes are scheduled in a queue. The CPU handles tasks in the order they arrive.
+2. Message Queues: In messaging systems, messages are queued up to be processed in the order they were sent.
+
