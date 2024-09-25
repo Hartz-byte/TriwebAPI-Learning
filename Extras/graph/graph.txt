@@ -1,0 +1,32 @@
+Graph
+A graph is a data structure that consists of a set of vertices (or nodes) and a set of edges that connect pairs of vertices. Graphs are used to represent relationships between entities, making them a versatile and powerful tool in computer science and various applications.
+
+Basic Concepts:
+- Vertices (Nodes): The fundamental units in a graph. Each vertex represents an entity.
+- Edges: Connections between pairs of vertices. Edges can be directed (one-way) or undirected (two-way).
+- Weighted Graph: A graph in which edges have weights (costs or distances) associated with them.
+- Unweighted Graph: A graph in which edges do not have weights.
+
+Types of Graphs:
+1. Directed Graph (Digraph): Edges have a direction, meaning they go from one vertex to another.
+2. Undirected Graph: Edges do not have a direction; they connect vertices in both directions.
+3. Weighted Graph: Edges have weights, indicating the cost to travel from one vertex to another.
+4. Unweighted Graph: Edges are treated equally with no associated costs.
+5. Cyclic Graph: A graph containing at least one cycle (a path that starts and ends at the same vertex).
+6. Acyclic Graph: A graph with no cycles.
+
+How Graphs Work
+Graphs can be represented in two main ways:
+1. Adjacency Matrix: A 2D array where each cell indicates whether a pair of vertices is connected by an edge.
+2. Adjacency List: An array of lists where each list contains the neighbors of a vertex. This representation is more space-efficient for sparse graphs.
+
+
+Shortest Path in Graphs
+Finding the shortest path between two vertices in a graph is a common problem. Several algorithms can be used to solve this problem, depending on the characteristics of the graph (e.g., weighted vs. unweighted).
+
+Common Shortest Path Algorithms:
+1. Dijkstra's Algorithm: Efficiently finds the shortest path from a source vertex to all other vertices in a weighted graph with non-negative weights.
+2. Bellman-Ford Algorithm: Handles graphs with negative weights and can detect negative cycles.
+3. A Search Algorithm*: An extension of Dijkstra's algorithm that uses heuristics to improve efficiency in pathfinding problems.
+4. Floyd-Warshall Algorithm: A dynamic programming approach that finds the shortest paths between all pairs of vertices in a weighted graph.
+
