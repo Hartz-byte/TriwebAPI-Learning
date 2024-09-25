@@ -1,0 +1,6 @@
+LinkedList is a linear data structure where elements are stored in a sequence, and each element (called a node) contains a reference to the next element in the sequence. This creates a chain of nodes.
+
+Types of Linked Lists:
+Singly linked list: Each node points to the next node in the sequence.
+Doubly linked list: Each node points to both the next and previous nodes in the sequence.
+
