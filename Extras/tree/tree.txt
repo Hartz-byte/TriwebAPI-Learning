@@ -1,0 +1,29 @@
+What is a Tree?
+A tree is a hierarchical data structure that consists of nodes connected by edges. It is a non-linear data structure that resembles a tree in nature, with a single root node from which all other nodes descend. Each node can have zero or more children, and the structure is defined recursively.
+
+Key Terminology:
+Node: The fundamental part of a tree that contains data and links to other nodes.
+Root: The top node of the tree, which has no parent.
+Leaf: A node that has no children.
+Parent: A node that has one or more child nodes.
+Child: A node that descends from another node.
+Subtree: A tree formed by a node and its descendants.
+
+How Does a Tree Work?
+- A tree starts with a single root node.
+- Each node can point to multiple child nodes, creating a hierarchy.
+- Traversing the tree can be done in various ways:
+    - Pre-order Traversal: Visit the root, then the left subtree, followed by the right subtree.
+    - In-order Traversal: Visit the left subtree, the root, and then the right subtree.
+    - Post-order Traversal: Visit the left subtree, then the right subtree, and finally the root.
+    - Level-order Traversal: Visit nodes level by level from the root downwards.
+
+Why Do We Use Trees?
+Trees are useful for representing hierarchical data and relationships. They enable efficient searching, insertion, and deletion operations. Their structure is particularly beneficial in scenarios where data needs to be organized in a way that reflects relationships, such as parent-child relationships.
+
+Applications of Trees:
+1. File Systems: Operating systems use trees to represent files and directories, allowing hierarchical organization and easy navigation.
+2. Websites: The structure of a website, with its various pages and subpages, can be represented as a tree.
+3. XML and JSON Parsing: Trees are used to represent hierarchical data structures in markup languages like XML and data interchange formats like JSON.
+4. Network Routing: Trees are used to determine the best path for data to travel across networks.
+
