@@ -1,0 +1,34 @@
+BFS (Breadth-First Search)
+Breadth-First Search (BFS) is an algorithm used to traverse or search through tree or graph data structures. It explores the neighbor nodes at the present depth prior to moving on to nodes at the next depth level.
+
+Characteristics of BFS:
+1. Traversal Order: BFS visits all the nodes at the present depth level before moving on to the nodes at the next depth level.
+2. Data Structure: Typically implemented using a queue to keep track of the nodes to be explored.
+3. Completeness: BFS is guaranteed to find the shortest path in unweighted graphs.
+
+How BFS Works:
+1. Start from the root node (or any arbitrary node in a graph).
+2. Enqueue the starting node into a queue and mark it as visited.
+3. While the queue is not empty:
+    - Dequeue a node from the front of the queue.
+    - Process (visit) the node.
+    - Enqueue all its unvisited neighboring nodes into the queue and mark them as visited.
+
+
+
+DFS (Depth-First Search)
+Depth-First Search (DFS) is another algorithm used for traversing or searching tree or graph data structures. It explores as far as possible along each branch before backtracking.
+
+Characteristics of DFS:
+1. Traversal Order: DFS goes deep into the graph or tree, exploring a branch before moving to another.
+2. Data Structure: Can be implemented using a stack (either explicitly or through recursion).
+3. Completeness: DFS may not find the shortest path in an unweighted graph.
+
+How DFS Works:
+1. Start from the root node (or any arbitrary node in a graph).
+2. Push the starting node onto a stack and mark it as visited.
+3. While the stack is not empty:
+    - Pop a node from the top of the stack.
+    - Process (visit) the node.
+    - Push all its unvisited neighboring nodes onto the stack and mark them as visited.
+
