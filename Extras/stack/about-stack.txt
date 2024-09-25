@@ -1,0 +1,16 @@
+What is Stack?
+A stack is a linear data structure that follows the Last In, First Out (LIFO) principle. This means that the last element added to the stack will be the first one to be removed. Think of it like a stack of plates: the last plate placed on top is the first one you remove.
+
+How Does a Stack Work?
+Push: Adds an element to the top of the stack.
+Pop: Removes the top element from the stack.
+Peek: Retrieves the top element without removing it.
+IsEmpty: Checks whether the stack is empty.
+
+Why Do We Use Stacks?
+Stacks are useful in scenarios where you need to reverse or keep track of the order of operations. They are used when you need to remember something temporarily and process it later.
+
+Applications of Stacks:
+1. Undo Mechanism: Most text editors use stacks to implement the "undo" feature. Each change is pushed onto the stack, and when the user hits "undo," the last change is popped off.
+2. Browser History: Web browsers maintain a stack for the user's navigation history. When a user clicks the back button, the most recent page is popped off the stack, and the previous page is loaded.
+
