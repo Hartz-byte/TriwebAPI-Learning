@@ -1,0 +1,31 @@
+Tree Traversal
+
+Tree traversal refers to the process of visiting all the nodes in a tree data structure in a specific order. There are several ways to traverse a tree, and the most common methods include:
+1. In-order Traversal:
+    - In this method, the current node is processed between its child nodes.
+    - Order: Traverse the left subtree, visit the root, and then traverse the right subtree.
+    - Example: For the same tree above, the in-order traversal would be: D, B, E, A, C
+
+2. Pre-order Traversal:
+    - In this method, the current node is processed before its child nodes.
+    - Order: Visit the root, then traverse the left subtree, and finally traverse the right subtree.
+
+3. Post-order Traversal:
+    - In this method, the current node is processed after its child nodes.
+    - Order: Traverse the left subtree, traverse the right subtree, and then visit the root.
+    - Example: For the same tree, the post-order traversal would be: D, E, B, C, A
+
+
+
+Binary Search Tree (BST)
+
+A Binary Search Tree (BST) is a specific type of binary tree that maintains a sorted order among its elements. It has the following properties:
+1. Node Structure: Each node in a BST has at most two children: a left child and a right child.
+
+2. Ordering:
+    - The left subtree of a node contains only nodes with values less than the node's value.
+    - The right subtree of a node contains only nodes with values greater than the node's value.
+    - This property must hold for all nodes in the BST.
+
+3. Efficiency: BSTs allow for efficient searching, insertion, and deletion operations, typically having a time complexity of O(log n) in balanced trees.
+
